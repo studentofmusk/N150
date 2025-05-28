@@ -2,12 +2,15 @@ from typing import List
 
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        elements = set()
-        for num in nums:
-            if num in elements:
-                return num
-            elements.add(num)
+        cache = [0]* len(nums)
+
+        for i in range(len(nums)):
+            if cache[nums[i]] == 1:
+                return nums[i]
+            cache[nums[i]] = 1
+
         return -1
+    
     def given(self, nums: List[int]) -> int:
         slow = fast = 0
         while True:
