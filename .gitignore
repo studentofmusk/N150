@@ -1,0 +1,26 @@
+# Executables
+*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+.mypy_cache/
+**/.mypy_cache/
+
+# C++ build artifacts
+*.o
+*.out
+*.a
+*.so
+
+# Build folders
+build/
+dist/
+bin/
+obj/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+.DS_Store
