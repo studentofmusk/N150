@@ -25,6 +25,7 @@ class Solution:
 
 print(Solution().rob(nums=[5,1,2,10,6,2,7,9,3,1]))
 print(Solution().dps(nums=[5,1,2,10,6,2,7,9,3,1]))
+print(Solution().dps(nums=[6,7,1,3,8,3,8]))
 
 # House Robber
 #
