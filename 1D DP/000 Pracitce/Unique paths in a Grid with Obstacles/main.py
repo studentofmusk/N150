@@ -48,11 +48,7 @@ class Solution:
             ):
                 return 0
             
-
-            neighbors = [[0, 1], [1, 0]]
-            cache[(r, c)] = 0
-            for dr, dc in neighbors:
-                cache[(r, c)] += dfs(r+dr, c+dc)
+            cache[(r, c)] = dfs(r+1, c) + dfs(r, c+1)
             
             return cache[(r, c)]
 
