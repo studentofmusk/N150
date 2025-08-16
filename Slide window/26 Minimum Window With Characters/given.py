@@ -3,7 +3,8 @@ class Solution:
         if t == "":
             return ""
         
-        countT, window = {}, {}
+        countT: dict = {}
+        window: dict = {}
         for c in t:
             countT[c] = 1 + countT.get(c, 0)
 
