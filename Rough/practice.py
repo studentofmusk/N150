@@ -1,37 +1,16 @@
 from typing import List
 class Solution:
-    def solveNQueens(self, n: int) -> List[List[str]]:
-        res = []
-        posDiag = set()
-        negDiag = set()
-        Cols = set()
+    def maxProfit(self, prices: List[int]) -> int:
+        profit = 0
+        lowest = prices[0]
+        for price in prices:
+            if price < lowest:
+                lowest = price
+            profit = max(price-lowest, profit)
+        return profit
 
-        board = [["."] * n for i in range(n)]
 
-        def backtrack(r):
-            if r == n:
-                copy = ["".join(row) for row in board]
-                res.append(copy)
-                return
-
-            for c in range(n):
-                if (
-                    c in Cols or
-                    (r-c) in negDiag or
-                    (r+c) in posDiag
-                ):
-                    continue
-                Cols.add(c)
-                posDiag.add((r+c))
-                negDiag.add((r-c))
-                board[r][c] = "Q"
-                backtrack(r+1)
-
-                Cols.remove(c)
-                posDiag.remove((r+c))
-                negDiag.remove((r-c))
-                board[r][c] = "."
-        backtrack(0)
-
-        return res
+solution = Solution()
+print(solution.maxProfit([10,1,5,6,7,1]))
+print(solution.maxProfit([10,8,7,5,2]))
 
