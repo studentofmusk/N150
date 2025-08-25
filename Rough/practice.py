@@ -1,16 +1,36 @@
-from typing import List
-class Solution:
-    def maxProfit(self, prices: List[int]) -> int:
-        profit = 0
-        lowest = prices[0]
-        for price in prices:
-            if price < lowest:
-                lowest = price
-            profit = max(price-lowest, profit)
-        return profit
+class Node:
+    def __init__(self):
+        self.children = {}
+        self.endOfWord = False
+
+class Trie:
+    def __init__(self):
+        self.root = Node()
+    
+    def insert(self, word:str):
+
+        curr = self.root
+        
+        for w in word:
+            if w not in curr.children:
+                curr.children[w] = Node()
+            curr = curr.children[w]
+        
+        curr.endOfWord = True
+    
+    def search(self, word:str):
+        curr = self.root
+        for w in word:
+            if w not in curr.children:
+                return False
+            curr = curr.children[w]
+
+        return curr.endOfWord
 
 
-solution = Solution()
-print(solution.maxProfit([10,1,5,6,7,1]))
-print(solution.maxProfit([10,8,7,5,2]))
+newTrie = Trie()
+newTrie.insert("global")
+newTrie.insert("mango")
+print(newTrie.search("gta"))
+print(newTrie.search("mango"))
 
