@@ -8,8 +8,8 @@ class UnionFind:
 
     def find(self, node: int) -> int:
         res = node
-        while res != self.parent[node]:
-            self.parent[res] = self.parent[self.parent[node]]
+        while res != self.parent[res]:
+            self.parent[res] = self.parent[self.parent[res]]
             res = self.parent[res]
         return res
 
@@ -60,3 +60,22 @@ print(Solution().MST(
 ))
 
 
+# Example Walkthrough
+
+# Say we have a tree: 0 ← 1 ← 2 ← 3
+# (i.e. parent[3]=2, parent[2]=1, parent[1]=0, parent[0]=0)
+
+# find(3):
+
+# res=3 → parent[3]=2 → not root
+
+# compress: parent[3] = parent[2] = 1
+
+# res=1 → parent[1]=0 → not root
+
+# compress: parent[1] = parent[0] = 0
+
+# res=0 → parent[0]=0 → stop
+
+# Now parent array is [0,0,1,1]
+# But after more finds, it will flatten further to [0,0,0,0].
