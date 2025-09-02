@@ -4,7 +4,8 @@ class Solution:
     def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
         res = []
 
-        line, length = [], 0
+        line: list[str] = []
+        length = 0
         i = 0
 
         while i < len(words):
